@@ -4,7 +4,7 @@ use multifactorials::Multifactorials;
 #[cfg(target_os = "windows")]
 use clear::clear;
 
-#[cfg(target_os = "unix")]
+#[cfg(target_os = "linux")]
 use clear::clear;
 
 mod clear;

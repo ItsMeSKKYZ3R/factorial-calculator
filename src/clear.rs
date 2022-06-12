@@ -49,6 +49,7 @@ fn get_buffer_info() -> CONSOLE_SCREEN_BUFFER_INFO {
     buffer
 }
 
+#[cfg(target_os = "windows")]
 fn set_cursor_position(x: i16, y: i16) {
     let handle = get_console_handle();
 
@@ -88,7 +89,7 @@ pub fn clear() {
     set_cursor_position(0, 0);
 }
 
-#[cfg(target_os = "unix")]
+#[cfg(target_os = "linux")]
 pub fn clear() {
     Command::new("clear")
         .output()
