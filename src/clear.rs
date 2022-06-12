@@ -1,4 +1,4 @@
-#[cfg(target_os = "unix")]
+#[cfg(target_os = "linux")]
 use std::process::Command;
 
 #[cfg(target_os = "windows")]
@@ -91,7 +91,7 @@ pub fn clear() {
 
 #[cfg(target_os = "linux")]
 pub fn clear() {
-    Command::new("clear")
+    let output = Command::new("clear")
         .output()
         .expect("failed to execute process");
 
