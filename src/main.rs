@@ -33,7 +33,17 @@ fn main() {
             println!("{}! = {}", number, res);
         },
         "complex" => {
-            todo!()
+            let number = get_user_input("Enter a number to calculate its factorial: ").parse::<f64>().unwrap();
+
+            clear();
+
+            let number_of_iterations = get_user_input("Enter the number of iterations: ").parse::<i32>().unwrap();
+
+            clear();
+
+            let res = Multifactorials::complex(number, number_of_iterations);
+
+            println!("{}{} = {}", number, "!".repeat(number_of_iterations as usize), res);
         },
         _ => {
             println!("Invalid input");
