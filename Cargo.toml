@@ -7,3 +7,5 @@ edition = "2021"
 
 [dependencies]
 multifactorials = "0.3.0"
+winapi = "0.2.8"
+kernel32-sys = "0.2.1"

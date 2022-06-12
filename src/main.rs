@@ -1,18 +1,13 @@
-use std::{io, process::Command};
+use std::io;
+use multifactorials::Multifactorials;
 
-fn clear() {
-    let output = if cfg!(target_os = "windows") {
-        Command::new("cls")
-            .output()
-            .expect("failed to execute process")
-    } else {
-        Command::new("clear")
-            .output()
-            .expect("failed to execute process")
-    };
+#[cfg(target_os = "windows")]
+use clear::clear;
 
-    println!("{}", String::from_utf8_lossy(&output.stdout));
-}
+#[cfg(target_os = "unix")]
+use clear::clear;
+
+mod clear;
 
 fn get_user_input(question: &str) -> String {
     println!("{}", question);
@@ -30,7 +25,12 @@ fn main() {
 
     match factorial_type.to_lowercase().as_str() {
         "simple" => {
-            todo!()
+            let number = get_user_input("Enter a number to calculate its factorial: ").parse::<f64>().unwrap();
+            let res = Multifactorials::simple(number);
+
+            clear();
+
+            println!("{}! = {}", number, res);
         },
         "complex" => {
             todo!()
